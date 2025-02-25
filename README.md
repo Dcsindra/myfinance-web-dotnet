@@ -19,6 +19,12 @@ No terminal, na pasta raiz da aplicação, executar os comandos:
 - dotnet new classlib -n "myfinance-web-dotnet-service"
 - dotnet new classlib -n "myfinance-web-dotnet-domain"
 
+### Adicionar referências entre as camadas:
+
+No projeto 1 (aplicação) adicionar uma referência para o projeto da camada de serviços, infraestrutura e domínio.
+No projeto 2 (serviços) adicionar uma referência para o projeto da camada de infraestrutura e domínio.
+No projeto 4 (infra) adicionar uma referência para o projeto da camada de domínio.
+
 # MVC
 Os sufixos dos objetos dentro das pastas Model, View e Controller devem ser respeitados, ou seja, um arquivo dentro da pasta controller deve chamar QqCoisaControlller.
 
