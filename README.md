@@ -25,11 +25,12 @@ No projeto 1 (aplicação) adicionar uma referência para o projeto da camada de
 No projeto 2 (serviços) adicionar uma referência para o projeto da camada de infraestrutura e domínio.
 No projeto 4 (infra) adicionar uma referência para o projeto da camada de domínio.
 
-# MVC
+# Arquitetura MVC
 Os sufixos dos objetos dentro das pastas Model, View e Controller devem ser respeitados, ou seja, um arquivo dentro da pasta controller deve chamar QqCoisaControlller.
 
 ## Model
-Especificações de dados
+Especificações de dados.
+Model não é um espelho da entidade de domínio. Podem ter classes no model para trafegar com a view que não são entidades de domínio.
 
 ## View
 Recursos pelo qual o usuário irá interagir com a aplicação
@@ -40,7 +41,10 @@ Recursos pelo qual o usuário irá interagir com a aplicação
 
 ## Controler
 Representam as rotas que vão renderizar as views e receber os formulários recebidos pelos usuários e fazer uma requisição para uma camada superior para persistir os dados.
+Para cada controler é preciso ter uma ou mais views.
 
+Dentro de uma IActionResult precisa ter o nome da respectiva view.
+ 
 # Entity Framework
 
 ## ORM - Object Relational Mapping
@@ -72,6 +76,10 @@ Link - https://learn.microsoft.com/pt-br/ef/core/what-is-new/ef-core-9.0/whatsne
 Adicionar na classe Program.cs a instancia da classe MyFinanceDbContext.cs como um serviço.
 
 ## 2- myfinance-web-dotnet-service (Serviços)
+
+Criar dois arquivos C# do tipo interface, sendo um com nome IPlanoContaService.cs e outro com nome ITransacaoService.cs. Eles serão responsáveis por orquestrar as solicitações ao banco de dados.
+
+Criar as classes de serviços para as duas interfaces e injetar nela o objeto DbContext.
 
 ## 3- myfinance-web-dotnet-domain (Domínio)
 
